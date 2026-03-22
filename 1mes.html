@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 1 ✨</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  background: rgba(255,255,255,0.08);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  width: 90%;
+  max-width: 500px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+h1 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+p {
+  margin: 10px 0;
+  opacity: 0.9;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #203a43;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
+.route {
+  margin-top: 15px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heart {
+  position: absolute;
+  color: rgba(255,255,255,0.6);
+  animation: float 8s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Capítulo 1 ✨</h1>
+  <p id="contador"></p>
+  <p class="route">Pelotas ➝ Bahia</p>
+
+  <button onclick="mostrarMensagem()">Abrir surpresa</button>
+
+  <div id="mensagem" class="hidden">
+    <p>
+      Quem diria que uma viagem a argentina ia me fazer conhecer a mulher da minha vida
+    </p>
+    <p>
+      Você deixou esse mês muito melhor,
+      porque eu encontrei o amor da minha vida, e agora não me imagino não passando a vida com você, eu te amo
+    </p>
+    <p>
+      Se isso é só o começo,
+      eu tô animado pro que vem quando a gente se encontrar ❤️
+    </p>
+  </div>
+</div>
+
+<script>
+// ALTERA A DATA AQUI
+const dataInicio = new Date("2026-02-22");
+
+const hoje = new Date();
+const diffTime = hoje - dataInicio;
+const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+document.getElementById("contador").innerText =
+"Já se passaram " + diffDays + " dias desde aquele match inesperado.";
+
+function mostrarMensagem() {
+  document.getElementById("mensagem").classList.remove("hidden");
+}
+
+// corações flutuando
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 18 + 10) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 8000);
+}, 800);
+
+</script>
+
+</body>
+</html>
